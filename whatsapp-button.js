@@ -1,4 +1,4 @@
-(function() {
+window.onload = function() {
   // Get the current script tag
   const script = document.currentScript;
   const phone = script.getAttribute('data-phone') || '1234567890';
@@ -36,4 +36,4 @@
 
   // Add the button to the body
   document.body.appendChild(whatsappButton);
-})();
+};
