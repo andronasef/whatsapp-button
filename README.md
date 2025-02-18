@@ -45,7 +45,7 @@ Easily embed a floating WhatsApp button on any website with this lightweight, co
 1. **Bottom Right Position (Default):**
 ```html
 <script 
-  src="https://yourdomain.com/path/to/whatsapp-button.js" 
+  src="https://cdn.jsdelivr.net/gh/andronasef/whatsapp-button@refs/heads/master/whatsapp-button.js" 
   data-phone="201234567890">
 </script>
 ```
@@ -53,7 +53,7 @@ Easily embed a floating WhatsApp button on any website with this lightweight, co
 2. **Bottom Left Position with Larger Icon:**
 ```html
 <script 
-  src="https://yourdomain.com/path/to/whatsapp-button.js" 
+  src="https://cdn.jsdelivr.net/gh/andronasef/whatsapp-button@refs/heads/master/whatsapp-button.js" 
   data-phone="201234567890" 
   data-position="bottom-left" 
   data-size="60">
@@ -63,7 +63,7 @@ Easily embed a floating WhatsApp button on any website with this lightweight, co
 3. **Top Right Position with Smaller Icon:**
 ```html
 <script 
-  src="https://yourdomain.com/path/to/whatsapp-button.js" 
+  src="https://cdn.jsdelivr.net/gh/andronasef/whatsapp-button@refs/heads/master/whatsapp-button.js" 
   data-phone="201234567890" 
   data-position="top-right" 
   data-size="40">
