@@ -1,5 +1,5 @@
-window.onload = function() {
-  // Get the current script tag
+(function() {
+  document.addEventListener('DOMContentLoaded', function() {
   const script = document.currentScript;
   const phone = script.getAttribute('data-phone') || '1234567890';
   const position = script.getAttribute('data-position') || 'bottom-right';
@@ -36,4 +36,5 @@ window.onload = function() {
 
   // Add the button to the body
   document.body.appendChild(whatsappButton);
-};
+});
+})();
