@@ -1,79 +1,39 @@
-// WhatsApp Button Widget Script
-(function(window) {
-    // Default configuration
-    const defaultConfig = {
-        phone: '',                // WhatsApp number
-        position: 'right',        // 'right' or 'left'
-        bottomOffset: '40px',     // Distance from bottom
-        sideOffset: '40px',       // Distance from side
-        size: '60px',            // Button size
-        backgroundColor: '#25d366', // WhatsApp green
-        hoverColor: '#128C7E',    // Darker green for hover
-        showAfterScroll: 100,     // Show after scrolling this many pixels
-        zIndex: 100,             // z-index value
-        text: '',                // Optional text/icon HTML
-    };
+(function() {
+  // Get the current script tag
+  const script = document.currentScript;
+  const phone = script.getAttribute('data-phone') || '1234567890';
+  const position = script.getAttribute('data-position') || 'bottom-right';
+  const size = script.getAttribute('data-size') || '50';
 
-    // Create and initialize WhatsApp button
-    window.WhatsAppButton = {
-        init: function(userConfig) {
-            // Merge user config with defaults
-            const config = { ...defaultConfig, ...userConfig };
-            
-            // Validate phone number
-            if (!config.phone) {
-                console.error('WhatsApp Button: Phone number is required');
-                return;
-            }
+  // Create the button element
+  const whatsappButton = document.createElement('a');
+  whatsappButton.href = `https://wa.me/${phone}`;
+  whatsappButton.target = '_blank';
+  whatsappButton.innerHTML = `
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="${size}" height="${size}">
+  `;
 
-            // Create button element
-            const button = document.createElement('a');
-            button.href = `https://wa.me/${config.phone}`;
-            button.target = '_blank';
-            button.innerHTML = config.text;
-            
-            // Set inline styles
-            Object.assign(button.style, {
-                position: 'fixed',
-                width: config.size,
-                height: config.size,
-                bottom: config.bottomOffset,
-                [config.position]: config.sideOffset,
-                backgroundColor: config.backgroundColor,
-                color: '#FFF',
-                borderRadius: '50%',
-                textAlign: 'center',
-                fontSize: '30px',
-                boxShadow: '2px 2px 3px #999',
-                zIndex: config.zIndex,
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                textDecoration: 'none',
-                opacity: '0',
-                transition: 'all 0.3s ease-in-out',
-                cursor: 'pointer'
-            });
+  // Style the button
+  whatsappButton.style.position = 'fixed';
+  whatsappButton.style.zIndex = '1000';
+  whatsappButton.style.cursor = 'pointer';
+  whatsappButton.style.overflow = 'hidden';
 
-            // Add to page
-            document.body.appendChild(button);
+  // Positioning
+  if (position === 'bottom-right') {
+    whatsappButton.style.bottom = '20px';
+    whatsappButton.style.right = '20px';
+  } else if (position === 'bottom-left') {
+    whatsappButton.style.bottom = '20px';
+    whatsappButton.style.left = '20px';
+  } else if (position === 'top-right') {
+    whatsappButton.style.top = '20px';
+    whatsappButton.style.right = '20px';
+  } else if (position === 'top-left') {
+    whatsappButton.style.top = '20px';
+    whatsappButton.style.left = '20px';
+  }
 
-            // Scroll visibility handler
-            const toggleVisibility = () => {
-                button.style.opacity = window.scrollY > config.showAfterScroll ? '1' : '0';
-            };
-
-            // Add event listeners
-            window.addEventListener('scroll', toggleVisibility);
-            button.addEventListener('mouseover', () => {
-                button.style.backgroundColor = config.hoverColor;
-            });
-            button.addEventListener('mouseout', () => {
-                button.style.backgroundColor = config.backgroundColor;
-            });
-
-            // Initial visibility check
-            toggleVisibility();
-        }
-    };
-})(window);
+  // Add the button to the body
+  document.body.appendChild(whatsappButton);
+})();
